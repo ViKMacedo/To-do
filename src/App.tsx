@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import Todo from "./components/todoList";
 import Form from "./components/form";
+import Search from "./components/Search";
 
 function App() {
   const [todos, setTodos] = useState([
@@ -39,26 +40,40 @@ function App() {
   };
 
   const removeTodo = (id: number) => {
-    const newTodos = [...todos]
+    const newTodos = [...todos];
     const filteredTodos = newTodos.filter((todo) =>
       todo.id !== id ? todo : null
     );
-    setTodos(filteredTodos)
+    setTodos(filteredTodos);
   };
 
   const completeTodo = (id: number) => {
-    const newTodos = [...todos]
-    newTodos.map((todo) =>todo.id === id ? todo.isComplete =!todo.isComplete : todo)
-    setTodos(newTodos)
-  }
+    const newTodos = [...todos];
+    newTodos.map((todo) =>
+      todo.id === id ? (todo.isComplete = !todo.isComplete) : todo
+    );
+    setTodos(newTodos);
+  };
+
+  const [search, setSearch] = useState("");
 
   return (
     <div className="app">
       <h1>Lista de tarefas</h1>
+      <Search search={search} setSearch={setSearch} />
       <div className="todo-map">
-        {todos.map((todo) => (
-          <Todo key={todo.id} todo={todo} removeTodo={removeTodo} completeTodo={completeTodo}/>
-        ))}
+        {todos
+          .filter((todo) =>
+            todo.text.toLowerCase().includes(search.toLowerCase())
+          )
+          .map((todo) => (
+            <Todo
+              key={todo.id}
+              todo={todo}
+              removeTodo={removeTodo}
+              completeTodo={completeTodo}
+            />
+          ))}
       </div>
       <Form addTodo={addTodo} />
     </div>

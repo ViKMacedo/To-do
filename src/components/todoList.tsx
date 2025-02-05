@@ -1,4 +1,3 @@
-
 const todoList = ({todo, removeTodo, completeTodo} ) => {
   return (
     <div className="todo" style={{textDecoration: todo.isComplete ? "line-through" : "" }}>
