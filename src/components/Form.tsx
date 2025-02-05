@@ -1,6 +1,12 @@
-import { useState } from "react";
+import React, { useState } from 'react';
 
-const form = ({addTodo}) => {
+type AddTodoFn = (text: string, category: string) => void;
+
+interface FormProps {
+  addTodo: AddTodoFn;
+}
+
+const form: React.FC<FormProps> =  ({addTodo}) => {
   const [value, setValue] = useState("");
   const [category, setCategory] = useState("");
 

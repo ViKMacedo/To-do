@@ -1,6 +1,14 @@
-import React from 'react'
-
-const todoList = ({todo} ) => {
+import React from 'react';
+interface TodoType {
+  id: number; 
+  text: string;
+  category: string;
+  isComplete: boolean;
+}
+interface TodoProps {
+  todo: TodoType;
+}
+const todoList: React.FC<TodoProps> = ({ todo }) => {
   return (
     <div className="todo">
             <div className="content">
