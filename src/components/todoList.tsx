@@ -1,14 +1,14 @@
 import React from 'react';
 interface Todo {
-  id: number; // Ou string, dependendo do seu ID
+  id: number; 
   text: string;
   category: string;
   isComplete: boolean;
 }
 interface TodoListProps {
   todo: Todo;
-  removeTodo: (id: number) => void; // Tipo da função removeTodo
-  completeTodo: (id: number) => void; // Tipo da função completeTodo
+  removeTodo: (id: number) => void;
+  completeTodo: (id: number) => void;
 }
 
 const todoList: React.FC<TodoListProps> = ({todo, removeTodo, completeTodo} ) => {
