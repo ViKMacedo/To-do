@@ -35,18 +35,32 @@ function App() {
         isComplete: false,
       },
     ];
-    setTodos(newTodos)
+    setTodos(newTodos);
   };
+
+  const removeTodo = (id: number) => {
+    const newTodos = [...todos]
+    const filteredTodos = newTodos.filter((todo) =>
+      todo.id !== id ? todo : null
+    );
+    setTodos(filteredTodos)
+  };
+
+  const completeTodo = (id: number) => {
+    const newTodos = [...todos]
+    newTodos.map((todo) =>todo.id === id ? todo.isComplete =!todo.isComplete : todo)
+    setTodos(newTodos)
+  }
 
   return (
     <div className="app">
       <h1>Lista de tarefas</h1>
       <div className="todo-map">
         {todos.map((todo) => (
-          <Todo key={todo.id} todo={todo} />
+          <Todo key={todo.id} todo={todo} removeTodo={removeTodo} completeTodo={completeTodo}/>
         ))}
       </div>
-      <Form addTodo={addTodo}/>
+      <Form addTodo={addTodo} />
     </div>
   );
 }
