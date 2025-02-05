@@ -1,6 +1,15 @@
-import { useState } from "react";
+import React, { useState } from 'react';
 
-const form = ({addTodo}) => {
+// 1. Definir o tipo da função addTodo (muito importante!)
+type AddTodoFn = (text: string, category: string) => void;
+
+// 2. Definir a interface para as props do componente form
+interface FormProps {
+  addTodo: AddTodoFn;
+}
+
+// 3. Componente form tipado com a interface FormProps
+const form: React.FC<FormProps> = ({addTodo}) => {
   const [value, setValue] = useState("");
   const [category, setCategory] = useState("");
 

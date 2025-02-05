@@ -1,4 +1,10 @@
-const Filter = ({filter, setFilter, setSort}) => {
+interface FilterProps {
+    filter: any;
+    setFilter: React.Dispatch<React.SetStateAction<string>>;
+    setSort: React.Dispatch<React.SetStateAction<string>>;
+  }
+
+const Filter: React.FC<FilterProps> = ({filter, setFilter, setSort}) => {
   return (
     <div className="filter">
       <h2>Filter</h2>
