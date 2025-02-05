@@ -1,0 +1,54 @@
+import { useState } from "react";
+import "./App.css";
+import Todo from "./components/todoList";
+import Form from "./components/form";
+
+function App() {
+  const [todos, setTodos] = useState([
+    {
+      id: 1,
+      text: "Estudar",
+      category: "Estudo",
+      isComplete: false,
+    },
+    {
+      id: 2,
+      text: "Trabalhar",
+      category: "Trabalho",
+      isComplete: false,
+    },
+    {
+      id: 3,
+      text: "Descansar",
+      category: "Descanso",
+      isComplete: false,
+    },
+  ]);
+
+  const addTodo = (text: any, category: any) => {
+    const newTodos = [
+      ...todos,
+      {
+        id: Math.floor(Math.random() * 10000),
+        text,
+        category,
+        isComplete: false,
+      },
+    ];
+    setTodos(newTodos)
+  };
+
+  return (
+    <div className="app">
+      <h1>Lista de tarefas</h1>
+      <div className="todo-map">
+        {todos.map((todo) => (
+          <Todo key={todo.id} todo={todo} />
+        ))}
+      </div>
+      <Form addTodo={addTodo}/>
+    </div>
+  );
+}
+
+export default App;
