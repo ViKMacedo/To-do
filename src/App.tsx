@@ -1,54 +1,22 @@
+import "./styles/App.css";
+import TaskList from "./components/TaskList";
+import AddTask from "./components/addTask";
 import { useState } from "react";
-import "./App.css";
-import Todo from "./components/todoList";
-import Form from "./components/form";
+import { Task } from "./components/task";
 
 function App() {
-  const [todos, setTodos] = useState([
-    {
-      id: 1,
-      text: "Estudar",
-      category: "Estudo",
-      isComplete: false,
-    },
-    {
-      id: 2,
-      text: "Trabalhar",
-      category: "Trabalho",
-      isComplete: false,
-    },
-    {
-      id: 3,
-      text: "Descansar",
-      category: "Descanso",
-      isComplete: false,
-    },
-  ]);
+    const [tasks, setTasks] = useState<Task[]>([]);
 
-  const addTodo = (text: any, category: any) => {
-    const newTodos = [
-      ...todos,
-      {
-        id: Math.floor(Math.random() * 10000),
-        text,
-        category,
-        isComplete: false,
-      },
-    ];
-    setTodos(newTodos)
-  };
+    const handleTaskCreated = (newTask: Task) => {
+        setTasks([...tasks, newTask]);
+    };
 
-  return (
-    <div className="app">
-      <h1>Lista de tarefas</h1>
-      <div className="todo-map">
-        {todos.map((todo) => (
-          <Todo key={todo.id} todo={todo} />
-        ))}
-      </div>
-      <Form addTodo={addTodo}/>
-    </div>
-  );
+    return (
+        <div className="app">
+            <TaskList />
+            <AddTask onTaskCreated={handleTaskCreated} />
+        </div>
+    );
 }
 
 export default App;
