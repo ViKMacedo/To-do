@@ -32,7 +32,7 @@ Victor Macedo
 LinkedIn: https://www.linkedin.com/in/victormacedo101/
 
 <h3 align="center"> Referências </h3>
-https://axios-http.com/ptbr/docs/api_intro
-https://www.typescriptlang.org/pt/docs/handbook/react.html
-https://www.devmedia.com.br/consumindo-uma-api-com-react-js-e-axios/42900
-https://react.dev/learn
+<p>https://axios-http.com/ptbr/docs/api_intro <p/>
+<p>https://www.typescriptlang.org/pt/docs/handbook/react.html <p/>
+<p>https://www.devmedia.com.br/consumindo-uma-api-com-react-js-e-axios/42900<p/>
+<p>https://react.dev/learn<p/>
