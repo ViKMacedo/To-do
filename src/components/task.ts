@@ -1,6 +1,11 @@
+export enum TaskSituation {
+  Completed = "Completed ",
+  Uncompleted = "Uncompleted",
+}
 export interface Task {
-  id: number;
+  id: string;
   title: string;
   description: string;
-  situation: string;
+  situation: TaskSituation;
+  complete: boolean;
 }

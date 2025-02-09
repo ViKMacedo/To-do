@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Task } from "./task";
-import "../styles/addTask.css"
+import { Task, TaskSituation } from "./task";
+import "../styles/addTask.css";
+import axios from "axios";
 
 interface AddTaskProps {
   onTaskCreated: (newTask: Task) => void;
@@ -10,7 +11,8 @@ const AddTask: React.FC<AddTaskProps> = ({ onTaskCreated }) => {
   const [newTask, setNewTask] = useState<Omit<Task, "id">>({
     title: "",
     description: "",
-    situation: "Pendente",
+    situation: TaskSituation.Uncompleted,
+    complete: false
   });
 
   const handleInputChange = (
@@ -19,23 +21,33 @@ const AddTask: React.FC<AddTaskProps> = ({ onTaskCreated }) => {
     >
   ) => {
     const { name, value } = event.target;
-    setNewTask({ ...newTask, [name]: value });
+    const newValue = name === "situation" ? (value as TaskSituation) : value;
+    setNewTask({ ...newTask, [name]: newValue });
   };
 
   const handleCreateTask = async () => {
     try {
-      const newTaskWithId: Task = {
+      const response = await axios.post<Task>(
+        "https://chronos.wlssistemas.com.br/api/tasks",
+        newTask
+      );
+
+      const createdTask: Task = {
+        id: response.data.id,
         ...newTask,
-        id: Date.now(),
+        situation: response.data.situation as TaskSituation,
+        complete: response.data.complete,
       };
 
-      onTaskCreated(newTaskWithId);
-      setNewTask({ title: "", description: "", situation: "Pendente" });
+      onTaskCreated(createdTask);
+      setNewTask({
+        title: "",
+        description: "",
+        situation: TaskSituation.Uncompleted,
+        complete: false
+      });
       alert("Tarefa criada com sucesso!");
-    } catch (error) {
-      console.error("Erro ao criar tarefa:", error);
-      alert("Erro ao criar tarefa. Verifique o console para mais detalhes.");
-    }
+    } catch (error) {}
   };
 
   return (
@@ -60,9 +72,11 @@ const AddTask: React.FC<AddTaskProps> = ({ onTaskCreated }) => {
           value={newTask.situation}
           onChange={handleInputChange}
         >
-          <option value="Pendente">Pendente</option>
-          <option value="Em Andamento">Em Andamento</option>
-          <option value="Concluída">Concluída</option>
+          {Object.values(TaskSituation).map((situation) => (
+            <option key={situation} value={situation}>
+              {situation}
+            </option>
+          ))}
         </select>
         <button type="button" onClick={handleCreateTask}>
           Criar Tarefa

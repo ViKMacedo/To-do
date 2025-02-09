@@ -5,18 +5,18 @@ import { useState } from "react";
 import { Task } from "./components/task";
 
 function App() {
-    const [tasks, setTasks] = useState<Task[]>([]);
+  const [tasks, setTasks] = useState<Task[]>([]);
 
-    const handleTaskCreated = (newTask: Task) => {
-        setTasks([...tasks, newTask]);
-    };
+  const handleTaskCreated = (newTask: Task) => {
+    setTasks([...tasks, newTask]);
+  };
 
-    return (
-        <div className="app">
-            <TaskList />
-            <AddTask onTaskCreated={handleTaskCreated} />
-        </div>
-    );
+  return (
+    <div className="app">
+      <AddTask onTaskCreated={handleTaskCreated} />
+      <TaskList tasks={tasks} />
+    </div>
+  );
 }
 
 export default App;
