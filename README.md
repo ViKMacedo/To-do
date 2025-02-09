@@ -20,6 +20,7 @@ e pode dar run com o
 ```
 npm start
 ```
+em um localhost
 
 <h3 align="center">🖊 Dificuldades</h3>
 Principalmente a maior e a que eu não consegui ajustar até o presente momento, as funcionalidade da edicão da tarefa e sua exclusão, infelizmente não consegui dar continuidade nas mesmas creio que os endpoints estão certos, porém não consegui implementa-las corretamente, dando o famoso 404 na hora de fazer a requisição
@@ -32,7 +33,7 @@ Victor Macedo
 LinkedIn: https://www.linkedin.com/in/victormacedo101/
 
 <h3 align="center"> Referências </h3>
-[link] (https://axios-http.com/ptbr/docs/api_intro)
-[link] (https://www.typescriptlang.org/pt/docs/handbook/react.html)
-[link] (https://www.devmedia.com.br/consumindo-uma-api-com-react-js-e-axios/42900)
-[link] (https://react.dev/learn)
+[link](https://axios-http.com/ptbr/docs/api_intro)
+[link](https://www.typescriptlang.org/pt/docs/handbook/react.html)
+[link](https://www.devmedia.com.br/consumindo-uma-api-com-react-js-e-axios/42900)
+[link](https://react.dev/learn)
