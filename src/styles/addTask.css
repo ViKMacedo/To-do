@@ -1,0 +1,11 @@
+.new-task-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-task-form input,
+.new-task-form textarea,
+.new-task-form select {
+  margin-bottom: 10px;
+  padding: 5px;
+}
