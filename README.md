@@ -27,6 +27,12 @@ Principalmente a maior e a que eu não consegui ajustar até o presente momento,
 <h3 align="center">🎇 Extras</h3>
 Como extra, temos uma run na branch Api-Off, que funciona sem o uso da Api, porém sendo um CRUD completo em dados locais
 
-<h3 align="center"> criado por </h3>
+<h3 align="center"> Criado por </h3>
 Victor Macedo
 LinkedIn: https://www.linkedin.com/in/victormacedo101/
+
+<h3 align="center"> Referências </h3>
+- https://axios-http.com/ptbr/docs/api_intro
+- https://www.typescriptlang.org/pt/docs/handbook/react.html
+- https://www.devmedia.com.br/consumindo-uma-api-com-react-js-e-axios/42900
+- https://react.dev/learn
